@@ -12,6 +12,7 @@
 :root {
     --board-size: 600px;
     --cell-size: 200px;
+    --mark-size: calc(var(--cell-size) * 0.9);
 
 }
 
@@ -25,43 +26,85 @@ body{
     
 }
 
-.board-container {
-    display: flex;
-    flex-wrap: wrap;
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
     width: var(--board-size);
     height: var(--board-size);
     
-    
-
 }
 
-.board {
+.cell {
+    position: relative;
     width: var(--cell-size);
     height: var(--cell-size);
     border: 1px solid black;
     cursor: pointer;
-}
-
-/* .cross {
-    height: 200px;
-    width: 200px;
-    background-color: transparent;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+    border-right: none;
+}
+
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:last-child {
+    border-bottom: none;
+}
+
+
     
-
+.cross::before,
 .cross:after {
-    content: "\2715";
+    content: " ";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 100px;
-    line-height: 200px;
-    text-align: center;
-} */
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cross::before {
+    transform: rotate(45deg)
+}
+
+.cross::after {
+    transform: rotate(-45deg)
+}
+
+.circle::before,
+.circle:after {
+    content: " ";
+    position: absolute;
+    border-radius: 50%;
+    
+}
+
+.circle::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.circle::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;  
+}
 
 .game-over {
     position: fixed;

@@ -22,15 +22,15 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
-    
+    background: #ff5e62; 
+    font-family: sans-serif;
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    width: var(--board-size);
-    height: var(--board-size);
+    max-width: var(--board-size);
+    max-height: var(--board-size);
     
 }
 
@@ -38,7 +38,7 @@ body{
     position: relative;
     width: var(--cell-size);
     height: var(--cell-size);
-    border: 1px solid black;
+    border: 2px solid black;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -95,15 +95,17 @@ body{
 }
 
 .circle::before {
-    width: var(--mark-size);
-    height: var(--mark-size);
-    background-color: black;
+    width: calc(var(--mark-size) * .9);
+    height: calc(var(--mark-size) * .9);
+    background-color: white;
 }
 
 .circle::after {
-    width: calc(var(--mark-size) * .7);
-    height: calc(var(--mark-size) * .7);
-    background-color: white;  
+    width: calc(var(--mark-size) * .6);
+    height: calc(var(--mark-size) * .6);
+    background: #ff5e62; 
+
+
 }
 
 .game-over {
@@ -112,7 +114,44 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.85);
     display: none;
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+button {
+    border: none;
+    width: 10rem;
+    padding: 0.75rem 2rem;
+    border-radius: 20px;
+    cursor: pointer;    
+    background-color: white;
+    font-size: 1.5rem;
+}
+
+button:hover {
+    background: #ff5e62;
+    color: white;
+}
+
+.winning-message {
+    padding: 2rem;
+    color: white;
+    font-size: 4rem;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
 }
